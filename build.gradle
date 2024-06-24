@@ -38,6 +38,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
+	runtimeOnly 'org.postgresql:postgresql'
+	implementation 'org.springframework.boot:spring-boot-starter-logging' // 로깅을 위한 종속성
+
 }
 
 tasks.named('test') {
