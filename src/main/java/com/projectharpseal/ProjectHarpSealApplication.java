@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProjectHarpSealApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ProjectHarpSealApplication.class, args);
 	}
 }
