@@ -43,6 +43,7 @@ dependencies {
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-logging' // 로깅을 위한 종속성
+	testImplementation 'com.h2database:h2'
 
 }
 
