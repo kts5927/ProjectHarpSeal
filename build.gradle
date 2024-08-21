@@ -44,6 +44,10 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-logging' // 로깅을 위한 종속성
 	testImplementation 'com.h2database:h2'
+	implementation 'com.opencsv:opencsv:5.7.1' // OpenCSV 라이브러리
+	implementation 'org.apache.poi:poi-ooxml:5.2.3' // 최신 버전으로 변경 가능
+	implementation 'org.apache.poi:poi:5.2.3'      // 최신 버전으로 변경 가능
+
 
 }
 

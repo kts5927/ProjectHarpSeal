@@ -1,31 +1,29 @@
 package com.projectharpseal.APIcall.controller;
 
-import com.projectharpseal.APIcall.service.Public_service;
-import org.springframework.http.MediaType;
+import com.projectharpseal.APIcall.service.KCA_ProdInfo;
+import com.projectharpseal.APIcall.service.KCA_ProdPrice;
+import com.projectharpseal.APIcall.service.KCA_StoreInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.util.function.Tuple4;
 
 @RestController
 public class Public_controller {
 
-    private final Public_service publicService;
+    private final KCA_ProdPrice kcaProdPrice;
+//    private final KCA_ProdInfo kcaProdInfo;
+//    private final KCA_StoreInfo kcaStoreInfo;
 
-    public Public_controller(Public_service publicService) {
-        this.publicService = publicService;
+
+
+    public Public_controller( KCA_ProdPrice kcaProdPrice ) {
+        this.kcaProdPrice = kcaProdPrice;
+//        this.kcaProdInfo = kcaProdInfo;
+//        this.kcaStoreInfo = kcaStoreInfo;
     }
 
-    @GetMapping("/KCA_HIRA")
-    public Mono<Tuple4< String, String, String, String>> getProductPriceInfo() {
-        return publicService.KCA_HIRA_Api_URI();
+    @GetMapping("/test")
+    public void getTest() {
+        kcaProdPrice.parseApiCall();
     }
-
-    @GetMapping(value = "/KEPCO", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> getKEPCO_Data() {
-        return publicService.KEPCO_Api_URI();
-    }
-
 
 }
