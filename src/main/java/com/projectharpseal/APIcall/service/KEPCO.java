@@ -53,7 +53,7 @@ public class KEPCO {
                         String metro = rootNode.path("metro").asText();
                         String city = rootNode.path("city").asText().replace(" ", "");
                         String town = "";
-                        Optional<Location> LocationValue = locationRepository.findByLocationCityAndLocationCountryAndLocationTown(city, metro, town);
+                        Optional<Location> LocationValue = locationRepository.findByLocationCityAndLocationCountryAndLocationTown(metro, city, town);
                         if (LocationValue.isPresent()) {
                             Location location = LocationValue.get();
 
