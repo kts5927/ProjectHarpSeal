@@ -1,5 +1,7 @@
 package com.projectharpseal.APIcall;
 
+import com.projectharpseal.APIcall.Dto.Date_Return;
+
 import java.time.LocalDate;
 import java.time.DayOfWeek;
 import java.time.format.DateTimeFormatter;
@@ -22,5 +24,14 @@ public class DateUtils {
         }
 
         return FFM.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    }
+    public static Date_Return calculateLastYearMonth(){
+
+        LocalDate today = LocalDate.now();
+        LocalDate LY = today.minusYears(1);
+        String Year = LY.format(DateTimeFormatter.ofPattern("yyyy"));
+        String Month = LY.format(DateTimeFormatter.ofPattern("MM"));
+        String Day = "Null";
+        return new Date_Return(Year, Month, Day);
     }
 }

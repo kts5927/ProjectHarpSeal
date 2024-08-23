@@ -15,21 +15,21 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long location_key;
+    private Long locationKey;
 
-    private String location_city;
-    private String location_country;
-    private String location_town;
-    private double location_x;
-    private double location_y;
+    private String locationCity;
+    private String locationCountry;
+    private String locationTown;
+    private double locationX;
+    private double locationY;
 
     // 빌더 패턴을 위한 생성자
     @Builder
-    public Location(String location_city, String location_country, String location_town, double location_x, double location_y) {
-        this.location_city = location_city;
-        this.location_country = location_country;
-        this.location_town = location_town;
-        this.location_x = location_x;
-        this.location_y = location_y;
+    public Location(String locationCity, String locationCountry, String locationTown, double locationX, double locationY) {
+        this.locationCity = locationCity;
+        this.locationCountry = locationCountry;
+        this.locationTown = locationTown;
+        this.locationX = locationX;
+        this.locationY = locationY;
     }
 }

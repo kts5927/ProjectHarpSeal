@@ -43,11 +43,11 @@ public class Location_CSV {
             Row row = sheet.getRow(i);
 
             Location location = Location.builder()
-                    .location_city(parseStringCell(row.getCell(2))) // 1단계
-                    .location_country(parseStringCell(row.getCell(3))) // 2단계
-                    .location_town(parseStringCell(row.getCell(4))) // 3단계
-                    .location_x(parseDoubleCell(row.getCell(13))) // 경도(초/100)
-                    .location_y(parseDoubleCell(row.getCell(14))) // 위도(초/100)
+                    .locationCity(parseStringCell(row.getCell(2))) // 1단계
+                    .locationCountry(parseStringCell(row.getCell(3))) // 2단계
+                    .locationTown(parseStringCell(row.getCell(4))) // 3단계
+                    .locationX(parseDoubleCell(row.getCell(13))) // 경도(초/100)
+                    .locationY(parseDoubleCell(row.getCell(14))) // 위도(초/100)
                     .build();
 
             locationList.add(location);

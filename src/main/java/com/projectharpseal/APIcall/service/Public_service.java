@@ -33,7 +33,8 @@ public class Public_service {
         String path = env.getProperty(pathKey);
         String key = env.getProperty(keyParam);
         String fullUrl = baseUrl + path + "?" + String.join("&", queryParams) + key;
-
+        //Todo
+        // logger 없애기
         logger.info("Making request to URL: {}", fullUrl);
 
         return webClient.get()
