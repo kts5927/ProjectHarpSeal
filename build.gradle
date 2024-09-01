@@ -51,6 +51,11 @@ dependencies {
 
 }
 
+
+jar {
+	archiveFileName.set("ProjectHarpSeal.jar")
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
