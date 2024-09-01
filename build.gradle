@@ -53,7 +53,6 @@ dependencies {
 
 jar {
 	archiveFileName.set("ProjectHarpSeal.jar")
-	enabled = false
 }
 
 tasks.named('test') {
