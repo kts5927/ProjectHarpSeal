@@ -10,9 +10,9 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ProjectHarpseal
-    username: ProjectHarpseal
-    password: 6800
+    url: ${postgresql_URL}
+    username: ${postgresql_USERNAME}
+    password: ${postgresql_PASSWORD}
   # jpa properties
   jpa:
     hibernate:
