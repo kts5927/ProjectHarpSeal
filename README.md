@@ -1,2 +1,22 @@
-# ProjectHarpSeal
-Personal Project
+
+# 프로젝트 주제
+
+자취생들에게 필요한 정보를 가져다 주자!
+
+# 프로젝트 개요
+
+인원 : 1인개발 
+
+목적 : 프레임워크, CI/CD, DB 등 서버에 필요한 요소들을 직접 구현하며 학습한다
+
+기능 : 동내 전기요금 현황, 생필품 판매정보, 병원 정보, 날씨 등의 데이터를 제공
+
+
+# 아키텍처
+
+![image](https://github.com/user-attachments/assets/cd52d4ef-28bf-434a-af54-5836b6d622a0)
+
+
+# 예시
+
+이후 추가 예정..
