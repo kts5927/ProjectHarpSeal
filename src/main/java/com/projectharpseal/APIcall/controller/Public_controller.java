@@ -1,29 +1,21 @@
 package com.projectharpseal.APIcall.controller;
 
-import com.projectharpseal.APIcall.service.KCA_ProdInfo;
-import com.projectharpseal.APIcall.service.KCA_ProdPrice;
-import com.projectharpseal.APIcall.service.KCA_StoreInfo;
+import com.projectharpseal.APIcall.service.Location_CSV;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Public_controller {
 
-    private final KCA_ProdPrice kcaProdPrice;
-//    private final KCA_ProdInfo kcaProdInfo;
-//    private final KCA_StoreInfo kcaStoreInfo;
 
+    private static final Logger logger = LoggerFactory.getLogger(Location_CSV.class);
 
-
-    public Public_controller( KCA_ProdPrice kcaProdPrice ) {
-        this.kcaProdPrice = kcaProdPrice;
-//        this.kcaProdInfo = kcaProdInfo;
-//        this.kcaStoreInfo = kcaStoreInfo;
-    }
 
     @GetMapping("/test")
-    public void getTest() {
-        kcaProdPrice.parseApiCall();
+    public String getTest() {
+        return "Backend connect complete!";
     }
 
 }
