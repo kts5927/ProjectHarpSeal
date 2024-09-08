@@ -15,7 +15,7 @@ function App() {
 
     return (
         <div>
-            <h1>{data}</h1>
+            <h1>백엔드 데이터 : {data}</h1>
         </div>
     );
 }
