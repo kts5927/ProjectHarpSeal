@@ -8,7 +8,7 @@ function App() {
         const fetchData = async () => {
             const response = await axios.get('https://apiprojectharpseal.com/test');
             setData(response.data);
-        };
+        }
 
         fetchData();
     }, []);
