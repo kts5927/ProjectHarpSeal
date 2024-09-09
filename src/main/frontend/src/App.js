@@ -6,7 +6,7 @@ function App() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('https://apiprojectharpseal.com/test');
+            const response = await axios.get("/api/test");
             setData(response.data);
         }
 
