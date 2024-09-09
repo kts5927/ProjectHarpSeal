@@ -4,11 +4,19 @@ import axios from 'axios';
 function Home() {
     const [data, setData] = useState("");
 
+    const API_URL = window.location.hostname === 'localhost'
+        ? '/api'
+        : 'https://apiprojectharpseal.com';
+
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("/test");//to https
-            setData(response.data);
-        }
+            try {
+                const response = await axios.get(`${API_URL}/test`);
+                setData(response.data);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
 
         fetchData();
     }, []);

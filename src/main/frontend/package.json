@@ -37,12 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "options": {
-    "allowedHosts": [
-      "apiprojectharpseal.com",
-      ".apiprojectharpseal.com"
-    ],
-    "proxy": "https://apiprojectharpseal.com"
   }
 }
