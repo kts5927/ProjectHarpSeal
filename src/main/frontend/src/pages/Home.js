@@ -19,7 +19,7 @@ function Home() {
         };
 
         fetchData();
-    }, []);
+    }, [API_URL]);
 
     return (
         <div>
