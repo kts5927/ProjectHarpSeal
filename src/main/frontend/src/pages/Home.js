@@ -1,0 +1,24 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function Home() {
+    const [data, setData] = useState("");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get("/test");//to https
+            setData(response.data);
+        }
+
+        fetchData();
+    }, []);
+
+    return (
+        <div>
+            <h1>HarpSeal ver 1.0.0</h1>
+            <h1>백엔드 데이터 : {data}</h1>
+        </div>
+    );
+}
+
+export default Home;

@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Home from "./pages/Home";
 
 function App() {
-    const [data, setData] = useState("");
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get("/test");//to https
-            setData(response.data);
-        }
-
-        fetchData();
-    }, []);
-
     return (
-        <div>
-            <h1>백엔드 데이터 : {data}</h1>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route exact path="/" element={<Home />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
-
 export default App;
