@@ -6,7 +6,7 @@ function App() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("/api/test");
+            const response = await axios.get("/api/test");//to https
             setData(response.data);
         }
 

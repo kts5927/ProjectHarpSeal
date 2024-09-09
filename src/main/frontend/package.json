@@ -38,7 +38,7 @@
     ]
   },
   "options": {
-    "allowedHosts": ["projectharpseal.com", ".projectharpseal.com"],
-    "proxy": "https://apiprojectharpseal.com/"
+    "allowedHosts": ["apiprojectharpseal.com", ".apiprojectharpseal.com"],
+    "proxy": "https://apiprojectharpseal.com"
   }
 }
