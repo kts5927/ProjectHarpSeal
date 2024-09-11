@@ -2,8 +2,11 @@ server:
   port: 8082
 
 spring:
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  profiles:
+    include: oauth
+
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   web:
     resources:
       static-locations: META-INF:/resources, classpath:/resources, classpath:/static, classpath:/static/dist

@@ -24,9 +24,6 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -36,18 +33,12 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'io.netty:netty-resolver-dns-native-macos:4.1.111.Final:osx-aarch_64'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-logging' // 로깅을 위한 종속성
-	testImplementation 'com.h2database:h2'
 	implementation 'com.opencsv:opencsv:5.7.1' // OpenCSV 라이브러리
 	implementation 'org.apache.poi:poi-ooxml:5.2.3' // 최신 버전으로 변경 가능
 	implementation 'org.apache.poi:poi:5.2.3'      // 최신 버전으로 변경 가능
-
-
 }
 
 
