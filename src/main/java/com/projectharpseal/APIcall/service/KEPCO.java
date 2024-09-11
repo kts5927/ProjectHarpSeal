@@ -50,7 +50,7 @@ public class KEPCO {
                     JsonNode node = Data.get("data");
 
                     for (JsonNode rootNode : node) {
-                        String metro = rootNode.path("metro").asText();
+                        String metro = rootNode.path("metro").asText().replace("강원도","강원특별자치도");
                         String city = rootNode.path("city").asText().replace(" ", "");
                         String town = "";
                         Optional<Location> LocationValue = locationRepository.findByLocationCityAndLocationCountryAndLocationTown(metro, city, town);
