@@ -2,7 +2,6 @@ package com.projectharpseal.Login.Controller;
 
 
 import com.projectharpseal.Login.Service.SignupService;
-import io.jsonwebtoken.io.IOException;
 import org.springframework.web.bind.annotation.*;
 
 

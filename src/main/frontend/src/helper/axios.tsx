@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export function Axios() {
-    // const endpoint = 'http://localhost:8082/';  // 기본 엔드포인트
     const endpoint = 'https://apiprojectharpseal.com/'
 
     // GET 함수: URL과 쿼리 파라미터만 처리
