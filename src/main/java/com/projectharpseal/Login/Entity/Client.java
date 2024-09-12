@@ -23,8 +23,7 @@ public class Client {
 
 
     @Builder
-    public Client(Long key, String password, String email) {
-        this.key = key;
+    public Client(String password, String email) {
         this.password = password;
         this.email = email;
     }

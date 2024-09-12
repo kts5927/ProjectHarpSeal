@@ -26,9 +26,8 @@ public class JWT {
     }
 
     // JWT 토큰 생성
-    public String generateToken(Long id, String email) {
+    public String generateToken(String email) {
         Claims claims = Jwts.claims();
-        claims.put("id", id);
         claims.put("email", email);
 
         return Jwts.builder()

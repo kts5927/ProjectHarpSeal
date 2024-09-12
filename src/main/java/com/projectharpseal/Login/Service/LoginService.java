@@ -34,8 +34,7 @@ public class LoginService {
         System.out.println("userResourceNode = " + userResourceNode);
         System.out.println(accessToken);
 
-        Optional<Client> client = userRepository.findByKeyAndEmail(
-                userResourceNode.get("id").asLong(),
+        Optional<Client> client = userRepository.findByEmail(
                 userResourceNode.get("email").asText()
         );
 
@@ -47,7 +46,6 @@ public class LoginService {
         //DB에 회원가입 기록이 있는지 확인하기
         if (client.isPresent()) {
             String jwtToken = jwtService.generateToken(
-                    userResourceNode.get("id").asLong(),
                     userResourceNode.get("email").asText()
             );
             System.out.println("JWT Token: " + jwtToken);

@@ -52,14 +52,19 @@ function Signup() {
 
         try {
             // 외부 signup 함수 호출
-            const result = await signup(user.id, user.email, user.password);
+            const result = await signup(user.email, user.password);
 
             // 결과에 따라 처리
             if (result === "회원가입 완료") {
                 alert("회원가입이 성공적으로 완료되었습니다.");
                 navigate("/");  // 회원가입 성공 시 메인 페이지로 이동
-            } else {
-                alert("회원가입 중 오류가 발생했습니다.");
+            }
+            if (result === "이미 존재하는 회원"){
+                alert("이미 존재하는 회원입니다.")
+                navigate("/");
+            }
+            if (result === "오류 발생"){
+                alert("오류 발생")
             }
         } catch (error) {
             console.error("회원가입 요청 중 오류 발생:", error);
