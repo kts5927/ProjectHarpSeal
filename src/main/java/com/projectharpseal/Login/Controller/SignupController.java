@@ -20,7 +20,7 @@ public class SignupController {
     }
 
     @GetMapping("/request")
-    public String signuprequest(@RequestParam("id") String id,
+    public String signuprequest(@RequestParam("id") Long id,
                               @RequestParam("email") String email,
                               @RequestParam("password") String password)throws IOException{
 

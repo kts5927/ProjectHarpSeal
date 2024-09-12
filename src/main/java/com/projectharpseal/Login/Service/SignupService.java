@@ -16,7 +16,7 @@ public class SignupService {
         this.userRepository = userRepository;
     }
 
-    public String signUp(String id, String email, String password) {
+    public String signUp(Long id, String email, String password) {
         // 이메일로 기존 사용자 검색
         Optional<Client> existingUser = userRepository.findByEmail(email);
 

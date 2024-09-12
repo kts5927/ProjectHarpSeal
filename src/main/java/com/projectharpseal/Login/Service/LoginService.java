@@ -35,7 +35,7 @@ public class LoginService {
         System.out.println(accessToken);
 
         Optional<Client> client = userRepository.findByKeyAndEmail(
-                userResourceNode.get("id").asText(),
+                userResourceNode.get("id").asLong(),
                 userResourceNode.get("email").asText()
         );
 

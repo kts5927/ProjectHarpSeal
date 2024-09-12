@@ -16,14 +16,14 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String key;
+    private Long key;
 
     private String password;
     private String email;
 
 
     @Builder
-    public Client(String key, String password, String email) {
+    public Client(Long key, String password, String email) {
         this.key = key;
         this.password = password;
         this.email = email;
