@@ -2,22 +2,36 @@ package com.projectharpseal.Login.Controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.projectharpseal.Login.Service.LoginService;
-import org.springframework.http.ResponseEntity;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 @RestController
-@RequestMapping(value = "/login/oauth2", produces = "application/json")
+@RequestMapping(value = "/login", produces = "application/json")
 public class LoginController {
 
-    LoginService loginService;
+    private final LoginService loginService;
 
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
 
-    @GetMapping("/code/{registrationId}")
-    public ResponseEntity<JsonNode> socialLogin(@RequestParam("code") String code, @PathVariable String registrationId) {
+    @GetMapping("/oauth2/code/{registrationId}")
+    public void socialLogin(@RequestParam("code") String code,
+                            @PathVariable String registrationId,
+                            HttpServletResponse response) throws IOException {
+
         JsonNode userResource = loginService.socialLogin(code, registrationId);
-        return ResponseEntity.ok(userResource);
+
+        String name = URLEncoder.encode(userResource.get("name").asText(), StandardCharsets.UTF_8);
+        String id = URLEncoder.encode(userResource.get("id").asText(), StandardCharsets.UTF_8);
+        String email = URLEncoder.encode(userResource.get("email").asText(), StandardCharsets.UTF_8);
+        String jwt = URLEncoder.encode(userResource.get("jwt").asText(), StandardCharsets.UTF_8);
+        String redirectUrl = "http://localhost:3000/login?name=" + name + "&id=" + id + "&email=" + email+"&jwt="+jwt;
+
+        response.sendRedirect(redirectUrl);
     }
 }
