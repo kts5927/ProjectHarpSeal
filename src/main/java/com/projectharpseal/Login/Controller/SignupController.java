@@ -16,7 +16,7 @@ public class SignupController {
         this.signupService = signupService;
     }
 
-    @GetMapping("/request")
+    @PostMapping("/request")
     public String signuprequest(
                               @RequestParam("email") String email,
                               @RequestParam("password") String password){

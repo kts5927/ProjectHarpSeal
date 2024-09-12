@@ -26,13 +26,13 @@ public class JWT {
     }
 
     // JWT 토큰 생성
-    public String generateToken(String email) {
+    public String generateToken(String email, String TF) {
         Claims claims = Jwts.claims();
         claims.put("email", email);
+        claims.put("TF", TF);
 
         return Jwts.builder()
                 .setClaims(claims)  // 사용자 정의 claims 설정
-                .setSubject(email)   // 주체 설정
                 .setIssuedAt(new Date())  // 발행 시간
                 .setExpiration(new Date(System.currentTimeMillis() + 10800000))  // 만료 시간
                 .signWith(SECRET_KEY, SignatureAlgorithm.HS256)  // key값 설정

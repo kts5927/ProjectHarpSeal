@@ -2,6 +2,7 @@ package com.projectharpseal.Login.Controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.projectharpseal.Login.Service.LoginService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +27,13 @@ public class LoginController {
 
         JsonNode userResource = loginService.socialLogin(code, registrationId);
 
-        String id = URLEncoder.encode(userResource.get("id").asText(), StandardCharsets.UTF_8);
-        String email = URLEncoder.encode(userResource.get("email").asText(), StandardCharsets.UTF_8);
-        String jwt = URLEncoder.encode(userResource.get("jwt").asText(), StandardCharsets.UTF_8);
-        String redirectUrl = "https://projectharpseal.com/login?&id=" + id + "&email=" + email+"&jwt="+jwt;
+        String jwt = userResource.get("jwt").asText();
+        Cookie jwtCookie = new Cookie("jwt", jwt);
+        jwtCookie.setPath("/");
+        jwtCookie.setMaxAge(24 * 60 * 60);
+        response.addCookie(jwtCookie);
 
-        response.sendRedirect(redirectUrl);
+        response.sendRedirect("http://localhost:3000/");
+
     }
 }

@@ -42,19 +42,23 @@ public class LoginService {
         // if문 안쪽과 바깥쪽에 각각 return 하기 때문에 위로 올림
         ObjectNode responseNode = (ObjectNode) userResourceNode;
 
-
         //DB에 회원가입 기록이 있는지 확인하기
-        if (client.isPresent()) {
-            String jwtToken = jwtService.generateToken(
-                    userResourceNode.get("email").asText()
-            );
-            System.out.println("JWT Token: " + jwtToken);
+        String jwtToken;
 
-            responseNode.put("jwt", jwtToken);
-            return responseNode;
+        if (client.isPresent()) {
+            jwtToken = jwtService.generateToken(
+                    userResourceNode.get("email").asText(),
+                    "True"  // 회원가입이 되어있으면 True
+            );
+        } else {
+            jwtToken = jwtService.generateToken(
+                    userResourceNode.get("email").asText(),
+                    "False"  // 회원가입이 되어있지 않으면 False
+            );
         }
 
-        responseNode.put("jwt","NoJWT");
+        System.out.println("JWT Token: " + jwtToken);
+        responseNode.put("jwt", jwtToken);  // JWT 토큰을 응답에 추가
         return userResourceNode;
     }
 
