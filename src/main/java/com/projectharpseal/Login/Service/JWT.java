@@ -19,6 +19,7 @@ public class JWT {
     // Environment 객체를 통해 환경 변수에서 값을 가져옴
     public JWT(Environment env) {
         // 비밀 키를 생성 (byte[] -> SecretKey로 변환)
+        // SECRET_KEY는 32바이트 이상이어야함
         String secretKeyString = Objects.requireNonNull(env.getProperty("secretkey"),
                 "secretkey null error");
         this.SECRET_KEY = Keys.hmacShaKeyFor(secretKeyString.getBytes());

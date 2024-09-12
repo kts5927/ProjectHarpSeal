@@ -26,11 +26,10 @@ public class LoginController {
 
         JsonNode userResource = loginService.socialLogin(code, registrationId);
 
-        String name = URLEncoder.encode(userResource.get("name").asText(), StandardCharsets.UTF_8);
         String id = URLEncoder.encode(userResource.get("id").asText(), StandardCharsets.UTF_8);
         String email = URLEncoder.encode(userResource.get("email").asText(), StandardCharsets.UTF_8);
         String jwt = URLEncoder.encode(userResource.get("jwt").asText(), StandardCharsets.UTF_8);
-        String redirectUrl = "http://localhost:3000/login?name=" + name + "&id=" + id + "&email=" + email+"&jwt="+jwt;
+        String redirectUrl = "http://localhost:3000/login?&id=" + id + "&email=" + email+"&jwt="+jwt;
 
         response.sendRedirect(redirectUrl);
     }
