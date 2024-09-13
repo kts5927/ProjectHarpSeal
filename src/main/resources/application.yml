@@ -16,6 +16,12 @@ spring:
     url: ${postgresql_URL}
     username: ${postgresql_USERNAME}
     password: ${postgresql_PASSWORD}
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 30
+      connection-timeout: 30000
+      idle-timeout: 60000
+      max-lifetime: 1800000
   # jpa properties
   jpa:
     hibernate:
