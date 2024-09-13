@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import signup from "../helper/signup";  // signup 함수 import
+import {Axios} from "../helper/axios";
+import cookie from "../helper/cookie";
+
 
 function Signup() {
     const location = useLocation();
@@ -9,33 +12,23 @@ function Signup() {
     const [user, setUser] = useState({ id: '', email: '', jwt: '', password: '' });
 
     useEffect(() => {
-        // URL 파라미터 추출
-        const params = new URLSearchParams(location.search);
-        const id = params.get('id');
-        const email = params.get('email');
-        const jwt = params.get('jwt');
+        const jwtToken = Cookies.get('jwt');
+        if (jwtToken) {
+            const { post } = Axios();
 
-        if (id && email && jwt) {
-            // 파라미터 값 설정
-            setUser({
-                id: decodeURIComponent(id),
-                email: decodeURIComponent(email),
-                jwt: decodeURIComponent(jwt),
-                password: ''
-            });
-
-            if (jwt !== 'NoJWT') {
-                // JWT가 있으면 쿠키에 저장
-                Cookies.set('jwt', jwt, { expires: 1 });  // JWT를 쿠키에 저장, 만료일은 1일로 설정
-                console.log('JWT 쿠키가 설정되었습니다.');
-                window.location.href = "/";
-            }
-        } else {
-            // 필수 파라미터가 없을 경우 처리
-            alert('데이터를 받아오는데 실패하였습니다.');
-            window.location.href = "/";
+            post("/JWT/email", { jwt: jwtToken })
+                .then(response => {
+                    console.log(response)
+                    // 상태 업데이트
+                    setUser(prevState => ({
+                        ...prevState,
+                        email: response  // 서버 응답으로 email 설정
+                    }));
+                })
+                .catch(error => {
+                    console.error("이메일 요청 중 오류 발생:", error);
+                });
         }
-
     }, [location, navigate]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +50,7 @@ function Signup() {
             // 결과에 따라 처리
             if (result === "회원가입 완료") {
                 alert("회원가입이 성공적으로 완료되었습니다.");
+                Cookies.remove("jwt")
                 navigate("/");  // 회원가입 성공 시 메인 페이지로 이동
             }
             if (result === "이미 존재하는 회원"){

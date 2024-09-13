@@ -19,7 +19,10 @@ public class ProjectHarpSealApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("https://projectharpseal.com");
+				registry.addMapping("/**")
+						.allowedOrigins("https://projectharpseal.com")
+						.allowedOrigins("http://localhost:3000");
+
 			}
 		};
 	}

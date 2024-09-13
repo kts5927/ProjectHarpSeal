@@ -2,6 +2,8 @@ package com.projectharpseal.Login.Service;
 
 import com.projectharpseal.Login.Entity.Client;
 import com.projectharpseal.Login.Repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,6 +11,7 @@ import java.util.Optional;
 @Service
 public class SignupService {
 
+    private static final Logger logger = LoggerFactory.getLogger(SignupService.class);  // 로거 추가
     private final UserRepository userRepository;
 
     // 생성자 주입
@@ -27,6 +30,8 @@ public class SignupService {
 
         // 새로운 사용자 생성
         Client newUser = new Client(password, email);  // 매개변수 순서가 맞도록 수정
+        logger.info("새로운 사용자 생성: {}", newUser);  // Client 객체 로그 출력
+
         userRepository.save(newUser);  // 새로운 사용자 저장
 
         return "success";

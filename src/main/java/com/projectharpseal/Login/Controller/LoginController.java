@@ -4,20 +4,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.projectharpseal.Login.Service.LoginService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequestMapping(value = "/login", produces = "application/json")
 public class LoginController {
 
     private final LoginService loginService;
+    private final Environment env;
 
-    public LoginController(LoginService loginService) {
+    public LoginController(LoginService loginService, Environment environment ) {
         this.loginService = loginService;
+        this.env = environment;
     }
 
     @GetMapping("/oauth2/code/{registrationId}")
@@ -32,8 +33,7 @@ public class LoginController {
         jwtCookie.setPath("/");
         jwtCookie.setMaxAge(24 * 60 * 60);
         response.addCookie(jwtCookie);
-
-        response.sendRedirect("http://localhost:3000/");
+        response.sendRedirect(env.getProperty("HOST"));
 
     }
 }
