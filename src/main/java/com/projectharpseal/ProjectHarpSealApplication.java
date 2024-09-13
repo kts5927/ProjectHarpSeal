@@ -20,8 +20,7 @@ public class ProjectHarpSealApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins("https://projectharpseal.com")
-						.allowedOrigins("http://localhost:3000");
+						.allowedOrigins("https://projectharpseal.com","http://localhost:3000");
 
 			}
 		};
