@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function Axios() {
     const API_URL = window.location.hostname === 'localhost'
-        ? 'http://localhost:8082'
+        ? '/api'
         : 'https://apiprojectharpseal.com';
 
     // POST 함수: 데이터는 body로 처리

@@ -3,8 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import signup from "../helper/signup";  // signup 함수 import
 import {Axios} from "../helper/axios";
-import cookie from "../helper/cookie";
-
 
 function Signup() {
     const location = useLocation();
