@@ -2,7 +2,6 @@ package com.projectharpseal.APIcall.repository;
 
 
 import com.projectharpseal.APIcall.Entity.Electricity;
-import com.projectharpseal.APIcall.Entity.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
