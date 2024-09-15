@@ -1,30 +1,42 @@
 server:
   port: 8082
 
+#logging:
+#  level:
+#    root: INFO
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+#
+#  file:
+#    path: /coding/ProjectHarpSeal/HibernateLog
+
 spring:
   profiles:
     include: oauth
 
-#  autoconfigure:
-#    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
-  web:
-    resources:
-      static-locations: META-INF:/resources, classpath:/resources, classpath:/static, classpath:/static/dist
-  # Database
   datasource:
     driver-class-name: org.postgresql.Driver
     url: ${postgresql_URL}
     username: ${postgresql_USERNAME}
     password: ${postgresql_PASSWORD}
-# jpa properties
+    hikari:
+      minimum-idle: 17
+      maximum-pool-size: 17
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 20000
+
   jpa:
     hibernate:
-      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+      ddl-auto: update
     show-sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
     generate-ddl: true
-  sql:
-    init:
-      platform: postgres
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics  # 엔드포인트별로 노출
