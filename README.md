@@ -14,7 +14,8 @@
 
 # 아키텍처
 
-![image](https://github.com/user-attachments/assets/cd52d4ef-28bf-434a-af54-5836b6d622a0)
+![image](https://github.com/user-attachments/assets/d531601a-6f79-452e-88f0-5a1c215ff0d4)
+
 
 
 # 예시
