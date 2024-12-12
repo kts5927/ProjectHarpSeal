@@ -32,6 +32,7 @@ public class LoginController {
         Cookie jwtCookie = new Cookie("jwt", jwt);
         jwtCookie.setPath("/");
         jwtCookie.setMaxAge(24 * 60 * 60);
+        jwtCookie.setHttpOnly(false);
         response.addCookie(jwtCookie);
         response.sendRedirect(env.getProperty("HOST"));
 
