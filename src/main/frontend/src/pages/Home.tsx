@@ -29,28 +29,30 @@ function Home() {
 
     const handleLogin = () => {
         const jwtToken = Cookies.get('jwt'); // 쿠키에서 jwt 가져옴
-
+        console.log(jwtToken)
         // JWT 쿠키 확인
         if (jwtToken) {
-
-            // JWT를 쿼리 파라미터로 보내는 예시
-            post("/JWT/verify", {jwt: jwtToken})
-                .then(response => {
+            const verifyToken = async () => {
+                try {
+                    // JWT를 쿼리 파라미터로 보내는 예시
+                    const response = await post("/JWT/verify", { jwt: jwtToken });
+                    console.log("Response = ",response)
                     if (response === "Login successful") {
-                        setIsAuthenticated(true)
+                        setIsAuthenticated(true);
                     } else if (response === "Login failed") {
                         navigate("/login"); // 로그인 페이지로 이동
                     } else {
-                        alert("로그인 오류 발생")
+                        alert("로그인 오류 발생");
                         navigate("/");
                     }
-
-
-                })
-                .catch(error => {
+                } catch (error) {
                     console.error("요청 실패:", error);
-                });
-        }else {
+                }
+            };
+
+            verifyToken();
+        }
+else {
             window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=595594567479-3ms6j0agmk50rqh85f6g7pph5v0a7mo8.apps.googleusercontent.com&redirect_uri=${API_parameter}/login/oauth2/code/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`;
         }
     };
