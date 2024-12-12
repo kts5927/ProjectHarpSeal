@@ -1,7 +1,10 @@
 package com.projectharpseal.Login.Controller;
 
 import com.projectharpseal.Login.Service.JWT;
+import com.projectharpseal.Login.Service.SignupService;
 import io.jsonwebtoken.Claims;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -10,6 +13,7 @@ import java.util.Map;
 @RequestMapping(value = "/JWT", produces = "application/json")
 public class JwtController {
 
+    private static final Logger logger = LoggerFactory.getLogger(SignupService.class);
     private final JWT jwtService;
 
     public JwtController(JWT jwtService) {
@@ -24,6 +28,7 @@ public class JwtController {
             // JWT 토큰 검증
             Claims claims = jwtService.validateToken(token);
             String tf = claims.get("TF", String.class);
+            logger.info("토큰 검증 결과 = {}", tf);
 
             if (tf.equals("True")) {
                 return "Login successful";
