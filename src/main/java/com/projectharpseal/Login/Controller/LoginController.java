@@ -34,6 +34,7 @@ public class LoginController {
         jwtCookie.setMaxAge(24 * 60 * 60);
         jwtCookie.setHttpOnly(false);
         jwtCookie.setSecure(true);
+        jwtCookie.setDomain("projectharpseal.com");
 
 // Set-Cookie 헤더를 추가하여 SameSite 설정
         response.addHeader("Set-Cookie",
