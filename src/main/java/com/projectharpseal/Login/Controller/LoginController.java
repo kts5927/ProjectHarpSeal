@@ -33,8 +33,14 @@ public class LoginController {
         jwtCookie.setPath("/");
         jwtCookie.setMaxAge(24 * 60 * 60);
         jwtCookie.setHttpOnly(false);
-        response.addCookie(jwtCookie);
+        jwtCookie.setSecure(true);
+
+// Set-Cookie 헤더를 추가하여 SameSite 설정
+        response.addHeader("Set-Cookie",
+                String.format("jwt=%s; Path=/; Max-Age=%d; SameSite=None; Secure", jwt, 24 * 60 * 60));
+
         response.sendRedirect(env.getProperty("HOST"));
+
 
     }
 }
