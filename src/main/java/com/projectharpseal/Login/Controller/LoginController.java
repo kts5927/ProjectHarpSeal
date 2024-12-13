@@ -32,16 +32,9 @@ public class LoginController {
         Cookie jwtCookie = new Cookie("jwt", jwt);
         jwtCookie.setPath("/");
         jwtCookie.setMaxAge(24 * 60 * 60);
-        jwtCookie.setHttpOnly(false);
-        jwtCookie.setSecure(true);
-        jwtCookie.setDomain("projectharpseal.com");
-
-// Set-Cookie 헤더를 추가하여 SameSite 설정
-        response.addHeader("Set-Cookie",
-                String.format("jwt=%s; Path=/; Max-Age=%d; SameSite=None; Secure", jwt, 24 * 60 * 60));
-
+        jwtCookie.setDomain(env.getProperty("CookieHOST"));
+        response.addCookie(jwtCookie);
         response.sendRedirect(env.getProperty("HOST"));
-
 
     }
 }
